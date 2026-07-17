@@ -1,0 +1,17 @@
+[
+    {
+        "record_id": "MRN-938475",
+        "note_type": "Discharge Summary",
+        "text": "Patient John Doe (DOB: 05/14/1982) was discharged on 10/25/2023. Follow up with Dr. Sarah Smith at sarah.smith@general-hospital.org. Patient phone: 555-0198."
+    },
+    {
+        "record_id": "MRN-102938",
+        "note_type": "Progress Note",
+        "text": "Pt Mary Johnson visited the clinic on 11/02/2023 complaining of migraines. Her emergency contact is her husband, reachable at 555-867-5309. Previous scan on 08/15/2022 showed no abnormalities."
+    },
+    {
+        "record_id": "MRN-475639",
+        "note_type": "Nursing Notes",
+        "text": "Administered 50mg Metoprolol to Robert Chen. Vitals stable. Forward updated charts to cardiology-dept@medical-clinic.com. Next evaluation scheduled for 12/01/2023."
+    }
+]

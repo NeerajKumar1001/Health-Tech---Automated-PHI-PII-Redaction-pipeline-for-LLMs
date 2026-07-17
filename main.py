@@ -1,14 +1,8 @@
 import re
 from fastapi import FastAPI
 from pydantic import BaseModel
-
-# Mock clinical data simulating unredacted text
-mock_clinical_note = """
-Patient presented to the ER on 10/24/2023 complaining of severe chest pain.
-Contact patient's primary care physician at john.smith@medical-clinic.com.
-Emergency contact number: 555-867-5309. 
-Patient history indicates previous surgery on 01/15/2019.
-"""
+# Import our new data loader module!
+from dataset_loader import get_random_clinical_note
 
 def apply_regex_baseline(text: str) -> str:
     """Scans text for strict structural patterns and replaces them."""
@@ -28,8 +22,7 @@ def apply_regex_baseline(text: str) -> str:
     
     return safe_text
 
-# Initialize FastAPI
-app = FastAPI(title="PHI Redaction Proxy", version="1.0")
+app = FastAPI(title="PHI Redaction Proxy", version="1.1")
 
 class ProxyRequest(BaseModel):
     prompt: str
@@ -43,3 +36,10 @@ async def intercept_and_redact(request: ProxyRequest):
         "original_length": len(raw_text),
         "safe_prompt": redacted_text
     }
+
+# --- NEW ENDPOINT FOR DAY 2 ---
+@app.get("/v1/mock-note")
+async def fetch_mock_note():
+    """Returns a random, unredacted clinical note from our database."""
+    note = get_random_clinical_note()
+    return {"status": "success", "data": note}

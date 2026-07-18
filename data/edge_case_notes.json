@@ -1,0 +1,18 @@
+[
+  {
+    "note_id": "edge_001",
+    "text": "Patient John Smith (DOB 03/14/1985) presented with chest pain. Contact number (555) 123-4567 or email john.smith@email.com. Follow-up scheduled 07/25/2026."
+  },
+  {
+    "note_id": "edge_002",
+    "text": "45 y/o male, MRN 00214477, seen for hypertension follow-up. Callback 555.987.6543 x12. Referring physician reachable at dr.patel@cityhealth.org."
+  },
+  {
+    "note_id": "edge_003",
+    "text": "Pt reports symptoms since 7/1/2026. Emergency contact 555-321-9876. No known drug allergies. Diagnosis: acute bronchitis."
+  },
+  {
+    "note_id": "edge_004",
+    "text": "Discharge summary for patient seen on 2026-07-10. Diagnosis: Type 2 diabetes mellitus. Nurse line: (555) 246-8100."
+  }
+]

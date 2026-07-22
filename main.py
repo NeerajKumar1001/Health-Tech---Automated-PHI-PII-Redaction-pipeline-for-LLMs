@@ -29,8 +29,8 @@ async def intercept_and_redact(request: ProxyRequest):
     # LAYER 1: Fast Regex filtering
     regex_safe_text = apply_regex_baseline(raw_text)
     
-    # LAYER 2: Contextual NLP filtering
-    final_safe_text = apply_nlp_redaction(regex_safe_text)
+    # LAYER 2: Contextual NLP filtering (Now returns the text AND the map)
+    final_safe_text, reversal_map = apply_nlp_redaction(regex_safe_text)
     
     txn_id = log_transaction(
         endpoint="/v1/intercept",
@@ -42,7 +42,8 @@ async def intercept_and_redact(request: ProxyRequest):
         "status": "success",
         "transaction_id": txn_id,
         "original_length": len(raw_text),
-        "safe_prompt": final_safe_text
+        "safe_prompt": final_safe_text,
+        "secure_mapping": reversal_map  # The new dictionary!
     }
 
 @app.get("/v1/mock-note")

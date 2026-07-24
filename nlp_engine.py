@@ -1,7 +1,8 @@
 import re
 from presidio_analyzer import AnalyzerEngine
+from custom_recognizers import get_mrn_recognizer, get_facility_unit_recognizer
 
-# 1. Known medical eponyms that general NLP models frequently misclassify as PERSON
+# Known medical eponyms to preserve
 MEDICAL_EPONYM_ALLOWLIST = [
     "Parkinson's", "Parkinson", 
     "Alzheimer's", "Alzheimer", 
@@ -13,47 +14,47 @@ MEDICAL_EPONYM_ALLOWLIST = [
     "Graves'", "Grave's"
 ]
 
-# Clinical suffixes indicating a condition rather than an individual
 CLINICAL_CONDITION_SUFFIXES = [
     "disease", "syndrome", "lymphoma", "palsy", 
     "chorea", "dementia", "disorder", "phenomenon"
 ]
 
-# Initialize Presidio Analyzer
+# 1. Initialize Analyzer and Register Custom Recognizers
 analyzer = AnalyzerEngine()
+analyzer.registry.add_recognizer(get_mrn_recognizer())
+analyzer.registry.add_recognizer(get_facility_unit_recognizer())
 
 def apply_nlp_redaction(text: str):
     """
-    Scans text for contextual PHI while protecting medical conditions 
-    named after people (eponyms) from accidental redaction.
+    Scans text for general PHI, custom medical entities (MRN, Ward/Facility),
+    while protecting medical eponyms from accidental redaction.
     """
-    # Analyze text with Presidio while passing our allowlist
+    # 2. Include custom entities in the analysis request
+    target_entities = [
+        "PERSON", "LOCATION", "ORGANIZATION", 
+        "MEDICAL_RECORD_NUMBER", "HOSPITAL_FACILITY"
+    ]
+    
     results = analyzer.analyze(
         text=text, 
-        entities=["PERSON", "LOCATION", "ORGANIZATION"], 
+        entities=target_entities, 
         language='en',
         allow_list=MEDICAL_EPONYM_ALLOWLIST
     )
     
-    # Contextual check: Filter out any entity falsely flagged as PERSON 
-    # if it is directly followed by a medical suffix (e.g., "Parkinson disease")
+    # Contextual check to preserve medical conditions
     filtered_results = []
     for res in results:
         if res.entity_type == "PERSON":
-            # Extract text following the detected entity
             trailing_text = text[res.end:].strip().lower()
-            
-            # Check if the next word is a clinical condition indicator
             is_medical_condition = any(
                 trailing_text.startswith(suffix) for suffix in CLINICAL_CONDITION_SUFFIXES
             )
-            
             if is_medical_condition:
-                continue  # Skip redacting this entity; it's a condition!
+                continue
                 
         filtered_results.append(res)
     
-    # Sort results from end to start to maintain correct string indexing
     filtered_results = sorted(filtered_results, key=lambda x: x.start, reverse=True)
     
     secure_mapping = {}

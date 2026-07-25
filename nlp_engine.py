@@ -19,32 +19,49 @@ CLINICAL_CONDITION_SUFFIXES = [
     "chorea", "dementia", "disorder", "phenomenon"
 ]
 
-# 1. Initialize Analyzer and Register Custom Recognizers
+# Entity-specific confidence thresholds
+ENTITY_SCORE_THRESHOLDS = {
+    "PERSON": 0.50,                   # Lower threshold for high-risk patient/doctor names
+    "MEDICAL_RECORD_NUMBER": 0.50,   # Lower threshold for critical IDs
+    "HOSPITAL_FACILITY": 0.60,       # Moderate threshold
+    "LOCATION": 0.70,                # Higher threshold to avoid redacting clinical terms
+    "ORGANIZATION": 0.70             # Higher threshold for general orgs
+}
+
+DEFAULT_GLOBAL_THRESHOLD = 0.60
+
+# Initialize Analyzer and Register Custom Recognizers
 analyzer = AnalyzerEngine()
 analyzer.registry.add_recognizer(get_mrn_recognizer())
 analyzer.registry.add_recognizer(get_facility_unit_recognizer())
 
-def apply_nlp_redaction(text: str):
+def apply_nlp_redaction(text: str, global_threshold: float = DEFAULT_GLOBAL_THRESHOLD):
     """
-    Scans text for general PHI, custom medical entities (MRN, Ward/Facility),
-    while protecting medical eponyms from accidental redaction.
+    Scans text for PHI using Presidio and filters results using entity-specific 
+    and global confidence score thresholds.
     """
-    # 2. Include custom entities in the analysis request
     target_entities = [
         "PERSON", "LOCATION", "ORGANIZATION", 
         "MEDICAL_RECORD_NUMBER", "HOSPITAL_FACILITY"
     ]
     
-    results = analyzer.analyze(
+    # Analyze text using global score threshold baseline
+    raw_results = analyzer.analyze(
         text=text, 
         entities=target_entities, 
         language='en',
+        score_threshold=0.30,  # Catch broad candidates first; we'll filter below
         allow_list=MEDICAL_EPONYM_ALLOWLIST
     )
     
-    # Contextual check to preserve medical conditions
     filtered_results = []
-    for res in results:
+    for res in raw_results:
+        # Check entity-specific score threshold
+        min_required_score = ENTITY_SCORE_THRESHOLDS.get(res.entity_type, global_threshold)
+        if res.score < min_required_score:
+            continue  # Drop candidate if confidence score is too low
+            
+        # Contextual check to preserve medical eponyms/conditions
         if res.entity_type == "PERSON":
             trailing_text = text[res.end:].strip().lower()
             is_medical_condition = any(
@@ -55,6 +72,7 @@ def apply_nlp_redaction(text: str):
                 
         filtered_results.append(res)
     
+    # Sort results from end to start for string indexing safety
     filtered_results = sorted(filtered_results, key=lambda x: x.start, reverse=True)
     
     secure_mapping = {}

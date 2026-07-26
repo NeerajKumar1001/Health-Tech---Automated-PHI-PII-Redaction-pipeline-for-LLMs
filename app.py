@@ -3,8 +3,9 @@ import os
 os.environ["PYTHONUNBUFFERED"] = "1"
 
 
-from fastapi import FastAPI, Header
+from fastapi import FastAPI, Header, Request
 from fastapi.responses import FileResponse
+from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
 
@@ -18,6 +19,14 @@ from auth import create_token, verify_token
 
 
 app = FastAPI()
+
+
+
+# ---------------- TEMPLATES ---------------- #
+
+templates = Jinja2Templates(
+    directory="templates"
+)
 
 
 
@@ -74,10 +83,16 @@ class LoginRequest(BaseModel):
 
 
 @app.get("/")
-def home():
+def home(request: Request):
 
-    return FileResponse(
-        "templates/index.html"
+    return templates.TemplateResponse(
+
+        "index.html",
+
+        {
+            "request": request
+        }
+
     )
 
 
@@ -94,7 +109,6 @@ def dashboard():
 
 
 # ---------------- OTP LOGIN ---------------- #
-
 
 
 @app.post("/send-otp")
@@ -156,7 +170,6 @@ def verify_otp_api(data: OTPVerify):
         })
 
 
-
         return {
 
 
@@ -192,7 +205,6 @@ def verify_otp_api(data: OTPVerify):
 # ---------------- USER LOGIN ---------------- #
 
 
-
 @app.post("/login")
 def login(data: LoginRequest):
 
@@ -216,7 +228,6 @@ def login(data: LoginRequest):
 
 
 
-
     token = create_token({
 
         "username":
@@ -227,7 +238,6 @@ def login(data: LoginRequest):
         user["role"]
 
     })
-
 
 
 
@@ -250,8 +260,9 @@ def login(data: LoginRequest):
 
 
 
-# ---------------- PROTECTED REDACT API ---------------- #
 
+
+# ---------------- PROTECTED REDACT API ---------------- #
 
 
 @app.post("/redact")
@@ -262,7 +273,6 @@ def redact(
     authorization: str = Header(None)
 
 ):
-
 
 
     # AUTH CHECK
@@ -282,14 +292,19 @@ def redact(
 
 
     token = authorization.replace(
+
         "Bearer ",
+
         ""
+
     )
 
 
 
     user = verify_token(
+
         token
+
     )
 
 
@@ -312,9 +327,10 @@ def redact(
 
 
     redacted_text, entities = redact_text(
-        data.text
-    )
 
+        data.text
+
+    )
 
 
 

@@ -3,7 +3,6 @@ from presidio_analyzer import PatternRecognizer, Pattern
 def get_mrn_recognizer() -> PatternRecognizer:
     """
     Custom recognizer for Medical Record Numbers (MRNs).
-    Matches patterns like MRN-123456, MRN: 987654, or MRN 456789.
     """
     mrn_pattern = Pattern(
         name="mrn_pattern",
@@ -19,12 +18,11 @@ def get_mrn_recognizer() -> PatternRecognizer:
 def get_facility_unit_recognizer() -> PatternRecognizer:
     """
     Custom recognizer for specific hospital wards, wings, and units.
-    Matches phrases like Ward 3B, ICU Wing, Cardiology Unit, Building 4.
     """
     facility_pattern = Pattern(
         name="facility_pattern",
         regex=r"\b(?:Ward|Wing|Unit|Building|Floor|Room)\s+[A-Z0-9-]+\b",
-        score=0.85
+        score=0.95  # Increased score to 0.95 so domain-specific facilities beat generic LOCATION tags
     )
     return PatternRecognizer(
         supported_entity="HOSPITAL_FACILITY",

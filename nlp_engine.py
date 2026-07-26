@@ -21,11 +21,11 @@ CLINICAL_CONDITION_SUFFIXES = [
 
 # Entity-specific confidence thresholds
 ENTITY_SCORE_THRESHOLDS = {
-    "PERSON": 0.50,                   # Lower threshold for high-risk patient/doctor names
-    "MEDICAL_RECORD_NUMBER": 0.50,   # Lower threshold for critical IDs
-    "HOSPITAL_FACILITY": 0.60,       # Moderate threshold
-    "LOCATION": 0.70,                # Higher threshold to avoid redacting clinical terms
-    "ORGANIZATION": 0.70             # Higher threshold for general orgs
+    "PERSON": 0.50,
+    "MEDICAL_RECORD_NUMBER": 0.50,
+    "HOSPITAL_FACILITY": 0.60,
+    "LOCATION": 0.70,
+    "ORGANIZATION": 0.70
 }
 
 DEFAULT_GLOBAL_THRESHOLD = 0.60
@@ -35,33 +35,67 @@ analyzer = AnalyzerEngine()
 analyzer.registry.add_recognizer(get_mrn_recognizer())
 analyzer.registry.add_recognizer(get_facility_unit_recognizer())
 
+# Domain priority mapping for tie-breaking overlapping entity spans
+DOMAIN_ENTITY_PRIORITY = {
+    "MEDICAL_RECORD_NUMBER": 2,
+    "HOSPITAL_FACILITY": 2,
+    "PERSON": 1,
+    "LOCATION": 0,
+    "ORGANIZATION": 0
+}
+
+def remove_overlapping_entities(results):
+    """
+    Deduplicates overlapping entities by keeping highest confidence score,
+    domain priority, and longer text spans.
+    """
+    # Sort by Score (descending) -> Domain Priority (descending) -> Span Length (descending)
+    sorted_candidates = sorted(
+        results, 
+        key=lambda x: (
+            x.score, 
+            DOMAIN_ENTITY_PRIORITY.get(x.entity_type, 0), 
+            x.end - x.start
+        ), 
+        reverse=True
+    )
+    
+    non_overlapping = []
+    for cand in sorted_candidates:
+        overlap = False
+        for kept in non_overlapping:
+            if max(cand.start, kept.start) < min(cand.end, kept.end):
+                overlap = True
+                break
+        if not overlap:
+            non_overlapping.append(cand)
+            
+    return non_overlapping
+
 def apply_nlp_redaction(text: str, global_threshold: float = DEFAULT_GLOBAL_THRESHOLD):
     """
     Scans text for PHI using Presidio and filters results using entity-specific 
-    and global confidence score thresholds.
+    confidence thresholds and overlapping entity deduplication.
     """
     target_entities = [
         "PERSON", "LOCATION", "ORGANIZATION", 
         "MEDICAL_RECORD_NUMBER", "HOSPITAL_FACILITY"
     ]
     
-    # Analyze text using global score threshold baseline
     raw_results = analyzer.analyze(
         text=text, 
         entities=target_entities, 
         language='en',
-        score_threshold=0.30,  # Catch broad candidates first; we'll filter below
+        score_threshold=0.30,
         allow_list=MEDICAL_EPONYM_ALLOWLIST
     )
     
     filtered_results = []
     for res in raw_results:
-        # Check entity-specific score threshold
         min_required_score = ENTITY_SCORE_THRESHOLDS.get(res.entity_type, global_threshold)
         if res.score < min_required_score:
-            continue  # Drop candidate if confidence score is too low
+            continue
             
-        # Contextual check to preserve medical eponyms/conditions
         if res.entity_type == "PERSON":
             trailing_text = text[res.end:].strip().lower()
             is_medical_condition = any(
@@ -72,7 +106,10 @@ def apply_nlp_redaction(text: str, global_threshold: float = DEFAULT_GLOBAL_THRE
                 
         filtered_results.append(res)
     
-    # Sort results from end to start for string indexing safety
+    # 1. Deduplicate overlapping entity spans
+    filtered_results = remove_overlapping_entities(filtered_results)
+    
+    # 2. Sort from end to start for safe string replacement
     filtered_results = sorted(filtered_results, key=lambda x: x.start, reverse=True)
     
     secure_mapping = {}

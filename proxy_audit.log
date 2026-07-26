@@ -1,1 +1,236 @@
 2026-07-20 19:45:35 | INFO | TXN: d113f9c7 | Endpoint: /v1/intercept | Inbound chars: 6 | Outbound chars: 6 | Status: SUCCESS
+2026-07-21 20:26:29 | INFO | Using device of type: cpu
+2026-07-21 20:26:31 | INFO | nlp_engine not provided, creating default.
+2026-07-21 20:26:36 | INFO | Created NLP engine: spacy. Loaded models: ['en']
+2026-07-21 20:26:36 | INFO | registry not provided, creating default.
+2026-07-21 20:26:36 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: UsBankRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: UsLicenseRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: UsItinRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: UsPassportRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: UsSsnRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: NhsRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: EsNifRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: EsNieRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: ItDriverLicenseRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: ItFiscalCodeRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: ItVatCodeRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: ItIdentityCardRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: ItPassportRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: PlPeselRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: CryptoRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: DateRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: EmailRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: IbanRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: IpRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: MedicalLicenseRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: MacAddressRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: PhoneRecognizer
+2026-07-21 20:26:36 | INFO | Loaded recognizer: UrlRecognizer
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: es, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: it, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: pl, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNifRecognizer supported languages: es, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNieRecognizer supported languages: es, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - ItDriverLicenseRecognizer supported languages: it, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - ItFiscalCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - ItVatCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - ItIdentityCardRecognizer supported languages: it, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - ItPassportRecognizer supported languages: it, registry supported languages: en
+2026-07-21 20:26:36 | WARNING | Recognizer not added to registry because language is not supported by registry - PlPeselRecognizer supported languages: pl, registry supported languages: en
+2026-07-21 20:26:36 | INFO | Loaded recognizer: SpacyRecognizer
+2026-07-21 20:26:59 | WARNING | Entity ORGANIZATION doesn't have the corresponding recognizer in language : en
+2026-07-21 20:26:59 | INFO | TXN: 91a9491f | Endpoint: /v1/intercept | Inbound chars: 6 | Outbound chars: 6 | Status: SUCCESS
+2026-07-21 20:27:01 | WARNING | Entity ORGANIZATION doesn't have the corresponding recognizer in language : en
+2026-07-21 20:27:01 | INFO | TXN: 29ff02fe | Endpoint: /v1/intercept | Inbound chars: 6 | Outbound chars: 6 | Status: SUCCESS
+2026-07-22 22:18:23 | INFO | Using device of type: cpu
+2026-07-22 22:18:24 | INFO | nlp_engine not provided, creating default.
+2026-07-22 22:18:29 | INFO | Created NLP engine: spacy. Loaded models: ['en']
+2026-07-22 22:18:29 | INFO | registry not provided, creating default.
+2026-07-22 22:18:29 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: UsBankRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: UsLicenseRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: UsItinRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: UsPassportRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: UsSsnRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: NhsRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: EsNifRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: EsNieRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: ItDriverLicenseRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: ItFiscalCodeRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: ItVatCodeRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: ItIdentityCardRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: ItPassportRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: PlPeselRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: CryptoRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: DateRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: EmailRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: IbanRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: IpRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: MedicalLicenseRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: MacAddressRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: PhoneRecognizer
+2026-07-22 22:18:29 | INFO | Loaded recognizer: UrlRecognizer
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: es, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: it, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: pl, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNifRecognizer supported languages: es, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNieRecognizer supported languages: es, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - ItDriverLicenseRecognizer supported languages: it, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - ItFiscalCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - ItVatCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - ItIdentityCardRecognizer supported languages: it, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - ItPassportRecognizer supported languages: it, registry supported languages: en
+2026-07-22 22:18:29 | WARNING | Recognizer not added to registry because language is not supported by registry - PlPeselRecognizer supported languages: pl, registry supported languages: en
+2026-07-22 22:18:29 | INFO | Loaded recognizer: SpacyRecognizer
+2026-07-22 22:18:57 | INFO | Fetching all recognizers for language en
+2026-07-22 22:18:57 | INFO | TXN: bdc45453 | Endpoint: /v1/intercept | Inbound chars: 7 | Outbound chars: 7 | Status: SUCCESS
+2026-07-22 22:19:06 | INFO | Fetching all recognizers for language en
+2026-07-22 22:19:06 | INFO | TXN: 784730e2 | Endpoint: /v1/intercept | Inbound chars: 7 | Outbound chars: 7 | Status: SUCCESS
+2026-07-22 22:19:07 | INFO | Fetching all recognizers for language en
+2026-07-22 22:19:07 | INFO | TXN: 99252bfa | Endpoint: /v1/intercept | Inbound chars: 7 | Outbound chars: 7 | Status: SUCCESS
+2026-07-23 19:26:04 | INFO | Using device of type: cpu
+2026-07-23 19:26:06 | INFO | nlp_engine not provided, creating default.
+2026-07-23 19:26:10 | INFO | Created NLP engine: spacy. Loaded models: ['en']
+2026-07-23 19:26:10 | INFO | registry not provided, creating default.
+2026-07-23 19:26:10 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: UsBankRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: UsLicenseRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: UsItinRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: UsPassportRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: UsSsnRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: NhsRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: EsNifRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: EsNieRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: ItDriverLicenseRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: ItFiscalCodeRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: ItVatCodeRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: ItIdentityCardRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: ItPassportRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: PlPeselRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: CryptoRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: DateRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: EmailRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: IbanRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: IpRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: MedicalLicenseRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: MacAddressRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: PhoneRecognizer
+2026-07-23 19:26:10 | INFO | Loaded recognizer: UrlRecognizer
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: es, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: it, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: pl, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNifRecognizer supported languages: es, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNieRecognizer supported languages: es, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - ItDriverLicenseRecognizer supported languages: it, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - ItFiscalCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - ItVatCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - ItIdentityCardRecognizer supported languages: it, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - ItPassportRecognizer supported languages: it, registry supported languages: en
+2026-07-23 19:26:10 | WARNING | Recognizer not added to registry because language is not supported by registry - PlPeselRecognizer supported languages: pl, registry supported languages: en
+2026-07-23 19:26:10 | INFO | Loaded recognizer: SpacyRecognizer
+2026-07-23 19:29:17 | WARNING | Entity ORGANIZATION doesn't have the corresponding recognizer in language : en
+2026-07-23 19:29:17 | INFO | TXN: f2d1b61f | Endpoint: /v1/intercept | Inbound chars: 140 | Outbound chars: 138 | Status: SUCCESS
+2026-07-24 22:46:34 | INFO | Using device of type: cpu
+2026-07-24 22:46:36 | INFO | nlp_engine not provided, creating default.
+2026-07-24 22:46:39 | INFO | Created NLP engine: spacy. Loaded models: ['en']
+2026-07-24 22:46:39 | INFO | registry not provided, creating default.
+2026-07-24 22:46:39 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: UsBankRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: UsLicenseRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: UsItinRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: UsPassportRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: UsSsnRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: NhsRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: EsNifRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: EsNieRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: ItDriverLicenseRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: ItFiscalCodeRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: ItVatCodeRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: ItIdentityCardRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: ItPassportRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: PlPeselRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: CryptoRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: DateRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: EmailRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: IbanRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: IpRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: MedicalLicenseRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: MacAddressRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: PhoneRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: UrlRecognizer
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: es, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: it, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: pl, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNifRecognizer supported languages: es, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNieRecognizer supported languages: es, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - ItDriverLicenseRecognizer supported languages: it, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - ItFiscalCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - ItVatCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - ItIdentityCardRecognizer supported languages: it, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - ItPassportRecognizer supported languages: it, registry supported languages: en
+2026-07-24 22:46:39 | WARNING | Recognizer not added to registry because language is not supported by registry - PlPeselRecognizer supported languages: pl, registry supported languages: en
+2026-07-24 22:46:39 | INFO | Loaded recognizer: SpacyRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: PatternRecognizer
+2026-07-24 22:46:39 | INFO | Loaded recognizer: PatternRecognizer
+2026-07-24 22:47:15 | WARNING | Entity ORGANIZATION doesn't have the corresponding recognizer in language : en
+2026-07-24 22:47:15 | INFO | TXN: ea277d92 | Endpoint: /v1/intercept | Inbound chars: 125 | Outbound chars: 150 | Status: SUCCESS
+2026-07-25 21:13:42 | INFO | Using device of type: cpu
+2026-07-25 21:13:43 | INFO | nlp_engine not provided, creating default.
+2026-07-25 21:13:46 | INFO | Created NLP engine: spacy. Loaded models: ['en']
+2026-07-25 21:13:46 | INFO | registry not provided, creating default.
+2026-07-25 21:13:46 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: CreditCardRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: UsBankRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: UsLicenseRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: UsItinRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: UsPassportRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: UsSsnRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: NhsRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: EsNifRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: EsNieRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: ItDriverLicenseRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: ItFiscalCodeRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: ItVatCodeRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: ItIdentityCardRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: ItPassportRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: PlPeselRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: CryptoRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: DateRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: EmailRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: IbanRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: IpRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: MedicalLicenseRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: MacAddressRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: PhoneRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: UrlRecognizer
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: es, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: it, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: pl, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNifRecognizer supported languages: es, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - EsNieRecognizer supported languages: es, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - ItDriverLicenseRecognizer supported languages: it, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - ItFiscalCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - ItVatCodeRecognizer supported languages: it, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - ItIdentityCardRecognizer supported languages: it, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - ItPassportRecognizer supported languages: it, registry supported languages: en
+2026-07-25 21:13:46 | WARNING | Recognizer not added to registry because language is not supported by registry - PlPeselRecognizer supported languages: pl, registry supported languages: en
+2026-07-25 21:13:46 | INFO | Loaded recognizer: SpacyRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: PatternRecognizer
+2026-07-25 21:13:46 | INFO | Loaded recognizer: PatternRecognizer
+2026-07-25 21:14:18 | WARNING | Entity ORGANIZATION doesn't have the corresponding recognizer in language : en
+2026-07-25 21:14:18 | INFO | TXN: 21abb6ea | Endpoint: /v1/intercept | Inbound chars: 87 | Outbound chars: 85 | Status: SUCCESS

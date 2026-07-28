@@ -11,6 +11,11 @@ from pydantic import BaseModel
 
 from redactor import redact_text
 
+# ===== ADDED FOR PDF REPORT =====
+from report_generator import generate_report
+# ================================
+
+
 from otp_service import save_otp, verify_otp
 from email_service import send_otp_email
 
@@ -50,7 +55,6 @@ users = {
 
 # ---------------- REQUEST MODELS ---------------- #
 
-
 class TextInput(BaseModel):
 
     text: str
@@ -81,7 +85,6 @@ class LoginRequest(BaseModel):
 
 # ---------------- FRONTEND PAGES ---------------- #
 
-
 @app.get("/")
 def home(request: Request):
 
@@ -109,7 +112,6 @@ def dashboard():
 
 
 # ---------------- OTP LOGIN ---------------- #
-
 
 @app.post("/send-otp")
 def send_otp(data: OTPRequest):
@@ -204,7 +206,6 @@ def verify_otp_api(data: OTPVerify):
 
 # ---------------- USER LOGIN ---------------- #
 
-
 @app.post("/login")
 def login(data: LoginRequest):
 
@@ -264,7 +265,6 @@ def login(data: LoginRequest):
 
 # ---------------- PROTECTED REDACT API ---------------- #
 
-
 @app.post("/redact")
 def redact(
 
@@ -323,6 +323,8 @@ def redact(
 
 
 
+
+
     # REDACTION ENGINE
 
 
@@ -331,6 +333,28 @@ def redact(
         data.text
 
     )
+
+
+
+    # ===== ADDED FOR PDF REPORT =====
+
+    report_path = generate_report(
+
+        username=user.get(
+            "username",
+            user.get("email", "Unknown")
+        ),
+
+        original_text=data.text,
+
+        redacted_text=redacted_text,
+
+        entities=entities
+
+    )
+
+    # ================================
+
 
 
 
@@ -355,6 +379,12 @@ def redact(
 
 
         "entity_types":
-        list(set(entities))
+        list(set(entities)),
+
+
+        # ===== ADDED =====
+        "report_path":
+        report_path
+        # ================
 
     }

@@ -1,262 +1,175 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HealthTech AI Redaction System</title>
 
-    <style>
+<title>HealthTech Login</title>
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
 
-        body{
-            min-height:100vh;
-            background: linear-gradient(135deg,#0f172a,#1e1b4b);
-            padding:40px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-        .container{
-            max-width:1100px;
-            margin:auto;
-            background: rgba(255,255,255,0.07);
-            backdrop-filter: blur(18px);
-            border-radius:20px;
-            padding:30px;
-            box-shadow:0 25px 60px rgba(0,0,0,0.5);
-        }
+body{
 
-        h1{
-            color:white;
-            text-align:center;
-            margin-bottom:30px;
-        }
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-        .grid{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:20px;
-        }
+    background:linear-gradient(135deg,#0f172a,#1e1b4b);
 
-        .field{
-            display:flex;
-            flex-direction:column;
-        }
+}
 
-        label{
-            color:#c7d2fe;
-            margin-bottom:8px;
-            font-weight:bold;
-        }
+.container{
 
-        input{
-            padding:12px;
-            border:none;
-            border-radius:10px;
-            background:rgba(255,255,255,0.08);
-            color:white;
-            font-size:15px;
-        }
+    width:420px;
 
-        input:focus{
-            outline:none;
-            border:1px solid #6366f1;
-        }
+    background:rgba(255,255,255,.08);
 
-        button{
-            width:100%;
-            margin-top:25px;
-            padding:14px;
-            border:none;
-            border-radius:12px;
-            background:#4f46e5;
-            color:white;
-            font-size:16px;
-            cursor:pointer;
-        }
+    backdrop-filter:blur(15px);
 
-        button:hover{
-            background:#4338ca;
-        }
+    border-radius:20px;
 
-        .section-title{
-            color:white;
-            margin-top:25px;
-            margin-bottom:10px;
-            font-size:18px;
-        }
+    padding:35px;
 
-        .output{
-            background:rgba(0,0,0,0.35);
-            color:white;
-            padding:15px;
-            border-radius:12px;
-            min-height:50px;
-            white-space:pre-wrap;
-        }
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
 
-    </style>
+}
+
+h1{
+
+    color:white;
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+label{
+
+    color:white;
+
+    display:block;
+
+    margin-bottom:8px;
+
+    margin-top:15px;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+}
+
+button{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#4f46e5;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    background:#4338ca;
+
+}
+
+</style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>🏥 HealthTech PHI/PII Redaction Pipeline</h1>
+<h1>🏥 HealthTech Login</h1>
 
-    <!-- LOGIN SECTION -->
-    <div class="grid">
+<label>Username</label>
+<input id="user" placeholder="Enter username">
 
-        <div class="field">
-            <label>Username</label>
-            <input type="text" id="user">
-        </div>
+<label>Password</label>
+<input id="pass" type="password" placeholder="Enter password">
 
-        <div class="field">
-            <label>Password</label>
-            <input type="password" id="pass">
-        </div>
-
-    </div>
-
-    <button onclick="login()">Login</button>
-
-    <hr style="margin:20px 0; opacity:0.3;">
-
-    <!-- PATIENT DATA -->
-    <div class="grid">
-
-        <div class="field">
-            <label>Patient First Name</label>
-            <input type="text" id="firstName">
-        </div>
-
-        <div class="field">
-            <label>Patient Last Name</label>
-            <input type="text" id="lastName">
-        </div>
-
-        <div class="field">
-            <label>Email</label>
-            <input type="text" id="email">
-        </div>
-
-        <div class="field">
-            <label>Phone Number</label>
-            <input type="text" id="phone">
-        </div>
-
-        <div class="field">
-            <label>Hospital Name</label>
-            <input type="text" id="hospital">
-        </div>
-
-        <div class="field">
-            <label>Disease</label>
-            <input type="text" id="disease">
-        </div>
-
-        <div class="field">
-            <label>Doctor Name</label>
-            <input type="text" id="doctor">
-        </div>
-
-        <div class="field">
-            <label>City</label>
-            <input type="text" id="city">
-        </div>
-
-    </div>
-
-    <button onclick="redactText()">Generate Safe Output</button>
-
-    <!-- OUTPUT -->
-    <div class="section-title">Redacted Output</div>
-    <div class="output" id="output"></div>
-
-    <div class="section-title">Entities Found</div>
-    <div class="output" id="entityCount">0</div>
-
-    <div class="section-title">Detected Entity Types</div>
-    <div class="output" id="entityTypes">None</div>
-
-    <div class="section-title">API Latency</div>
-    <div class="output" id="latency">0 ms</div>
+<button onclick="login()">
+Login
+</button>
 
 </div>
 
 <script>
 
-let token = "";
-let startTime = 0;
+async function login(){
 
-// ---------------- LOGIN ----------------
-async function login() {
+    const response = await fetch("/login",{
 
-    const res = await fetch("/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
         },
-        body: JSON.stringify({
-            username: document.getElementById("user").value,
-            password: document.getElementById("pass").value
+
+        body:JSON.stringify({
+
+            username:document.getElementById("user").value,
+
+            password:document.getElementById("pass").value
+
         })
+
     });
 
-    const data = await res.json();
-
-    if (data.token) {
-        token = data.token;
-        alert("Login successful! Role: " + data.role);
-    } else {
-        alert("Login failed");
-    }
-}
-
-// ---------------- REDACT ----------------
-async function redactText() {
-
-    let text = `
-Patient Name: ${document.getElementById("firstName").value} ${document.getElementById("lastName").value}
-Email: ${document.getElementById("email").value}
-Phone: ${document.getElementById("phone").value}
-Hospital: ${document.getElementById("hospital").value}
-Disease: ${document.getElementById("disease").value}
-Doctor: ${document.getElementById("doctor").value}
-City: ${document.getElementById("city").value}
-`;
-
-    startTime = Date.now();
-
-    const response = await fetch("/redact", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
-        },
-        body: JSON.stringify({
-            text: text
-        })
-    });
-
-    const endTime = Date.now();
 
     const data = await response.json();
 
-    document.getElementById("output").innerText =
-        data.redacted;
 
-    document.getElementById("entityCount").innerText =
-        data.entities_found;
+    if(data.token){
 
-    document.getElementById("entityTypes").innerText =
-        data.entity_types.join(", ");
+        localStorage.setItem("token",data.token);
 
-    document.getElementById("latency").innerText =
-        (endTime - startTime) + " ms";
+        localStorage.setItem("role",data.role);
+
+        window.location.href="/dashboard";
+
+    }
+
+    else{
+
+        alert(data.error);
+
+    }
+
 }
 
 </script>
